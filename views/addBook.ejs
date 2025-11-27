@@ -1,0 +1,23 @@
+<%- include("partials/header") %>
+
+<h2 class="mb-4">Add New Book</h2>
+
+<form action="/add-book" method="POST" class="card p-4 shadow">
+
+  <label class="form-label">Book Title:</label>
+  <input type="text" name="title" class="form-control mb-3" required>
+
+  <label class="form-label">Author:</label>
+  <input type="text" name="author" class="form-control mb-3" required>
+
+  <label class="form-label">Tags (comma separated):</label>
+  <input type="text" name="tags" class="form-control mb-3" required>
+
+  <label class="form-label">Total Copies:</label>
+  <input type="number" name="totalCopies" class="form-control mb-3" required>
+
+  <button class="btn btn-success w-100">Add Book</button>
+
+</form>
+
+<%- include("partials/footer") %>

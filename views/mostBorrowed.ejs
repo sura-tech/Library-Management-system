@@ -1,0 +1,16 @@
+<%- include("partials/header") %>
+
+<h2 class="mb-4">Most Borrowed Books 🔥</h2>
+
+<ul class="list-group shadow">
+
+  <% result.forEach(item => { %>
+    <li class="list-group-item d-flex justify-content-between">
+      <span><strong><%= item.title %></strong> — <%= item.author %></span>
+      <span class="badge bg-warning text-dark"><%= item.borrowCount %> borrows</span>
+    </li>
+  <% }) %>
+
+</ul>
+
+<%- include("partials/footer") %>

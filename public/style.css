@@ -1,0 +1,64 @@
+/* DEFAULT LIGHT MODE */
+body {
+  background: #f5f7fa;
+  color: #222;
+  transition: all 0.3s ease;
+}
+
+.card, table {
+  transition: all 0.3s ease;
+}
+
+/* ------------------------
+   🌙 DARK MODE
+--------------------------*/
+.dark-mode {
+  background: #1a1a1a !important;
+  color: #e6e6e6 !important;
+}
+
+.dark-mode table {
+  background-color: #222;
+  color: #fff;
+  border-color: #555;
+}
+
+.dark-mode .card {
+  background-color: #222 !important;
+  color: #fff;
+}
+
+.dark-mode input,
+.dark-mode select,
+.dark-mode textarea {
+  background-color: #2c2c2c !important;
+  color: white !important;
+  border: 1px solid #555 !important;
+}
+
+.dark-mode .btn {
+  border-radius: 8px;
+}
+
+.dark-mode nav.navbar {
+  background-color: #111 !important;
+}
+
+.dark-mode footer {
+  background-color: #111 !important;
+}
+
+/* Spacing Improvements */
+.navbar-nav .nav-link {
+  font-size: 1.1rem;
+}
+
+/* Table improvements */
+table {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+td, th {
+  padding: 12px;
+}

@@ -1,0 +1,17 @@
+<%- include("partials/header") %>
+
+<h2 class="mb-4">Search Books</h2>
+
+<form action="/search-results" class="card p-4 shadow">
+
+  <label class="form-label">Author:</label>
+  <input type="text" name="author" class="form-control mb-3">
+
+  <label class="form-label">Tag:</label>
+  <input type="text" name="tag" class="form-control mb-3">
+
+  <button class="btn btn-info w-100">Search</button>
+
+</form>
+
+<%- include("partials/footer") %>
