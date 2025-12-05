@@ -31,7 +31,49 @@ connectDB();
 // --------------------- ROUTES ---------------------
 
 // HOME PAGE
-app.get("/", (req, res) => res.render("index"));
+app.get("/", async (req, res) => {
+    try {
+        const booksCollection = db.collection("books");
+        const borrowedCollection = db.collection("borrowed");
+
+        // Total books
+        const totalBooks = await booksCollection.countDocuments();
+
+        // Total available copies
+        const availableAgg = await booksCollection.aggregate([
+            { $group: { _id: null, totalAvailable: { $sum: "$availableCopies" } } }
+        ]).toArray();
+        const totalAvailable = availableAgg[0]?.totalAvailable || 0;
+
+        // Total categories (unique tags)
+        const tags = await booksCollection.distinct("tags");
+        const totalCategories = tags.length;
+
+        // Most borrowed book
+        const topBorrowed = await borrowedCollection.aggregate([
+            { $group: { _id: "$bookId", count: { $sum: 1 } } },
+            { $sort: { count: -1 } },
+            { $limit: 1 }
+        ]).toArray();
+
+        let mostBorrowedBook = null;
+        if (topBorrowed.length > 0) {
+            mostBorrowedBook = await booksCollection.findOne({ _id: topBorrowed[0]._id });
+        }
+
+        res.render("index", {
+            totalBooks,
+            totalAvailable,
+            totalCategories,
+            mostBorrowedBook
+        });
+
+    } catch (error) {
+        console.error("Dashboard Error:", error);
+        res.send("Error loading dashboard");
+    }
+});
+
 
 // VIEW ALL BOOKS
 app.get("/books", async (req, res) => {

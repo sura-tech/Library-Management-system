@@ -1,12 +1,56 @@
 <%- include("partials/header") %>
 
-<h1 class="text-center mb-4">Welcome to the Library 📚</h1>
+<h1 class="text-center mb-4 fw-bold">📊 Library Dashboard</h1>
+<p class="text-center text-secondary mb-5">
+  Overview of your library at a glance.
+</p>
 
-<div class="text-center">
-  <a class="btn btn-primary btn-lg m-2" href="/books">📖 View Books</a>
-  <a class="btn btn-success btn-lg m-2" href="/add-book">➕ Add Book</a>
-  <a class="btn btn-info btn-lg m-2" href="/search">🔍 Search</a>
-  <a class="btn btn-warning btn-lg m-2" href="/most-borrowed">🔥 Top Borrowed</a>
+<div class="container">
+
+  <div class="row g-4">
+
+    <!-- Total Books -->
+    <div class="col-md-6 col-lg-3">
+      <div class="card stat-card shadow text-center p-3">
+        <h2>📚</h2>
+        <h5 class="mt-2">Total Books</h5>
+        <h3 class="fw-bold"><%= totalBooks %></h3>
+      </div>
+    </div>
+
+    <!-- Total Available Copies -->
+    <div class="col-md-6 col-lg-3">
+      <div class="card stat-card shadow text-center p-3">
+        <h2>✔️</h2>
+        <h5 class="mt-2">Available Copies</h5>
+        <h3 class="fw-bold"><%= totalAvailable %></h3>
+      </div>
+    </div>
+
+    <!-- Total Categories -->
+    <div class="col-md-6 col-lg-3">
+      <div class="card stat-card shadow text-center p-3">
+        <h2>🏷️</h2>
+        <h5 class="mt-2">Categories</h5>
+        <h3 class="fw-bold"><%= totalCategories %></h3>
+      </div>
+    </div>
+
+    <!-- Most Borrowed Book -->
+    <div class="col-md-6 col-lg-3">
+      <div class="card stat-card shadow text-center p-3">
+        <h2>⭐</h2>
+        <h5 class="mt-2">Most Borrowed</h5>
+        <% if (mostBorrowedBook) { %>
+          <h6 class="fw-bold mt-2"><%= mostBorrowedBook.title %></h6>
+        <% } else { %>
+          <h6>No data yet</h6>
+        <% } %>
+      </div>
+    </div>
+
+  </div>
+
 </div>
 
 <%- include("partials/footer") %>

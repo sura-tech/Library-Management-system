@@ -62,3 +62,24 @@ table {
 td, th {
   padding: 12px;
 }
+
+.stat-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border-radius: 12px;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+/* Dark mode support */
+.dark-mode .stat-card {
+  background-color: #222 !important;
+  color: white !important;
+  border: 1px solid #444;
+}
+
+.dark-mode .stat-card:hover {
+  box-shadow: 0 10px 25px rgba(255,255,255,0.1);
+}
